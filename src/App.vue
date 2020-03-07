@@ -5,9 +5,29 @@
 </template>
 
 <script>
+// import storage from "./storage";
+
 export default {
   name: "App",
-  components: {}
+  components: {},
+  data() {
+    return {
+      res: {}
+    };
+  },
+  mounted() {
+    // storage.setItem('a', 1);
+    // storage.setItem('user', {a: 1});
+    // storage.setItem('abc', {a: 2}, 'user');
+    // storage.clear('a');
+    // 本地加载请求静态 json 文件的形式
+    // this.axios.get('/mock/user/login.json').then((res) => {
+    //   this.res = res;
+    //   console.log(res)
+    // })
+    // 通过 easy-mock 平台实现数据请求
+    
+  }
 };
 </script>
 
