@@ -26,18 +26,39 @@ export default {
     //   console.log(res)
     // })
     // 通过 easy-mock 平台实现数据请求
-    
+    // this.axios.get('/get').then((res) => {
+    //   this.res = res;
+    //   console.log(res)
+    // })
+    // 本地集成 mockjs 实现数据 mock
+    //     this.axios.get("/user/login").then(res => {
+    //   this.res = res;
+    //   console.log(res);
+    // });
+    if (this.$cookie.get("userId")) {
+      this.getUser();
+      this.getCartCount();
+    }
+  },
+  methods: {
+    getUser() {
+      this.axios.get("/user").then((res = {}) => {
+        // to-do 保存到 vuex
+        this.$store.dispatch("saveUserName", res.username);
+      });
+    },
+    getCartCount() {
+      this.axios.get("/carts/products/sum").then((res = 0) => {
+        // to-do 保存到 vuex
+        this.$store.dispatch("saveCartCount", res);
+      });
+    }
   }
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+@import "./assets/scss/reset.scss";
+@import "./assets/scss/config.scss";
+@import "./assets/scss/btn.scss";
 </style>

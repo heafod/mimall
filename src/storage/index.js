@@ -13,7 +13,6 @@ export default {
         } else {
             let val = this.getStorage();
             val[key] = value;
-            console.log(val);
             window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(val));
         }
     },
